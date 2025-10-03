@@ -139,7 +139,9 @@ h2 {
   height: 100vh;
   text-align: center;
   background: linear-gradient(135deg, #0d0d0d, #1a1a2e, #16213e);
+  position: relative; /* por si los iconos flotantes lo necesitan */
 }
+
 .hero-content {
   position: relative; /* importante para que z-index funcione */
   z-index: 1; /* por encima de los iconos flotantes */
@@ -194,6 +196,7 @@ h2 {
   height: 100%;
   overflow: hidden;
   z-index: 0; /* detrás del contenido */
+  pointer-events: none; /* los iconos no bloquean clicks */
 }
 
 .hero-icons i {
@@ -209,6 +212,35 @@ h2 {
   10% { opacity: 0.3; }
   50% { opacity: 0.6; }
   100% { transform: translateY(-20vh) translateX(50px); opacity: 0; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #hero {
+    flex-direction: column; /* apila verticalmente */
+    padding: 20px;          /* evita que se pegue a los bordes */
+    height: auto;           /* deja que el hero crezca según contenido */
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;        /* reduce tamaño del título */
+  }
+
+  .hero-content p {
+    font-size: 1rem;        /* reduce tamaño del subtítulo */
+  }
+
+  .hero-buttons {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column; /* botones uno debajo del otro */
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;            /* ocupan todo el ancho disponible */
+    text-align: center;
+  }
 }
 
 
