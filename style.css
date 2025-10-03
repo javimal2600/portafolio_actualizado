@@ -136,15 +136,20 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* mantiene altura mínima de pantalla */
   text-align: center;
   background: linear-gradient(135deg, #0d0d0d, #1a1a2e, #16213e);
-  position: relative; /* por si los iconos flotantes lo necesitan */
+  position: relative; /* para los iconos flotantes */
+  padding: 40px 20px; /* espacio interno para que no se aplaste */
 }
 
 .hero-content {
-  position: relative; /* importante para que z-index funcione */
-  z-index: 1; /* por encima de los iconos flotantes */
+  position: relative; /* z-index funciona */
+  z-index: 1; /* por encima de iconos */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* separación entre h1, p y botones */
 }
 
 .hero-content h1 {
@@ -157,18 +162,19 @@ h2 {
 }
 
 .hero-content p {
-  margin: 15px 0;
+  margin: 0;
   font-size: 1.2rem;
   color: #ccc;
 }
 
 .hero-buttons {
+  display: flex;
+  gap: 15px; /* espacio entre botones en escritorio */
   margin-top: 20px;
 }
 
 .btn {
   padding: 12px 25px;
-  margin: 0 10px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 500;
@@ -196,7 +202,7 @@ h2 {
   height: 100%;
   overflow: hidden;
   z-index: 0; /* detrás del contenido */
-  pointer-events: none; /* los iconos no bloquean clicks */
+  pointer-events: none;
 }
 
 .hero-icons i {
@@ -206,7 +212,6 @@ h2 {
   animation: float 10s linear infinite;
 }
 
-/* Animación de flotación */
 @keyframes float {
   0% { transform: translateY(100vh) translateX(0); opacity: 0; }
   10% { opacity: 0.3; }
@@ -217,31 +222,31 @@ h2 {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   #hero {
-    flex-direction: column; /* apila verticalmente */
-    padding: 20px;          /* evita que se pegue a los bordes */
-    height: auto;           /* deja que el hero crezca según contenido */
+    flex-direction: column;
+    padding: 40px 20px;
   }
 
   .hero-content h1 {
-    font-size: 2rem;        /* reduce tamaño del título */
+    font-size: 2.2rem; /* un poco más grande que 2rem para no verse aplastado */
   }
 
   .hero-content p {
-    font-size: 1rem;        /* reduce tamaño del subtítulo */
+    font-size: 1.1rem;
   }
 
   .hero-buttons {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column; /* botones uno debajo del otro */
-    gap: 10px;
+    flex-direction: column; /* apilar botones */
+    gap: 12px; /* separación vertical */
+    width: 100%;
+    max-width: 300px; /* ancho máximo para que no se estiren demasiado */
   }
 
   .btn {
-    width: 100%;            /* ocupan todo el ancho disponible */
+    width: 100%;
     text-align: center;
   }
 }
+
 
 
 /* 🔹 Sobre mí */
