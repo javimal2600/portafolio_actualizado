@@ -58,18 +58,19 @@ const techIcons = [
   'devicon-visualstudiocode-plain',
 ];
 
-for(let i = 0; i < 12; i++) {
+const isMobile = window.innerWidth <= 768;
+const iconCount = isMobile ? 6 : 12;
+
+for(let i = 0; i < iconCount; i++) {
   const icon = document.createElement('i');
   icon.className = `devicon ${techIcons[Math.floor(Math.random() * techIcons.length)]} colored`;
-  
-  
+
   icon.style.left = Math.random() * 100 + 'vw';
   icon.style.top = Math.random() * 100 + 'vh';
-  
-  
-  icon.style.animationDuration = (10 + Math.random() * 10) + 's';
+  icon.style.animationDuration = (15 + Math.random() * 10) + 's';
   icon.style.fontSize = (20 + Math.random() * 30) + 'px';
-  
+
   heroIcons.appendChild(icon);
 }
+
 
